@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { songSchema } from "./Song";
+import { songSchema } from "./Song.js";
 
 const playlistSchema = new mongoose.Schema({
     title: {
