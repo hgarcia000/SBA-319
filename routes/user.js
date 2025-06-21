@@ -103,9 +103,9 @@ userRouter.delete('/delete/:id', async (req, res) => {
 
     } catch (error) {
 
-        res.status(404).json(error.message)
+        res.status(404).json(error.message);
 
     }
 })
 
-export default userRouter
+export default userRouter;
