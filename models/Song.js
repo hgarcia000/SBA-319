@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 export const songSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        index: 1
     },
     artist: {
         type: String,
@@ -16,6 +17,7 @@ export const songSchema = new mongoose.Schema({
     genre: String,
     score: {
         type: Number,
+        index: 1,
         default: 50,
         min: 0,
         max: 100
