@@ -29,12 +29,31 @@ songRouter.post('/add', async (req, res) => {
         title: req.body.title,
         artist: req.body.artist,
         genre: req.body.genre,
+        score: req.body.score
     });
 
     const result = await songDoc.save();
     res.status(201).json(result);
 
 });
+
+songRouter.put('/edit/:id', async (req, res) => {
+    try {
+
+        const query = await Song.findOneAndUpdate({ _id: req.params.id }, {
+            title: req.body.title,
+            artist: req.body.artist,
+            genre: req.body.genre,
+            score: req.body.score
+        });
+        res.status(200).json(query);
+
+    } catch (error) {
+        
+        res.status(404).json(error.message);
+
+    }
+})
 
 songRouter.patch('/updatescore/:id', async (req, res) => {
     try {
@@ -44,6 +63,19 @@ songRouter.patch('/updatescore/:id', async (req, res) => {
 
     } catch (error) {
 
+        res.status(404).json(error.message);
+        
+    }
+});
+
+songRouter.delete('/delete/:id', async (req, res) => {
+    try {
+        
+        const query = await Song.findByIdAndDelete(req.params.id);
+        res.status(204).json(query);
+
+    } catch (error) {
+        
         res.status(404).json(error.message);
         
     }
