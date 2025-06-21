@@ -4,6 +4,7 @@ import { songSchema } from "./Song";
 const playlistSchema = new mongoose.Schema({
     title: {
         type: String,
+        index: 1,
         default: 'Untitled Playlist'
     },
     createdBy: { type: String },
